@@ -21,8 +21,8 @@
         <guice.version>3.0</guice.version>
         <joda-time.version>2.2</joda-time.version>
         <log4j.version>1.2.17</log4j.version>
-        <slf4j-api.version>1.7.5</slf4j-api.version>
-        <testng.version>6.1.1</testng.version>
+        <slf4j-api.version>1.7.7</slf4j-api.version>
+        <testng.version>6.8.8</testng.version>
         <jackson-core.version>2.3.0</jackson-core.version>
         <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
     </properties>
