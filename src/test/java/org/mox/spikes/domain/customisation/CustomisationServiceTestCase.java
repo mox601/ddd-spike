@@ -1,6 +1,5 @@
 package org.mox.spikes.domain.customisation;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.mox.spikes.domain.customisation.commands.ApplyCustomTires;
 import org.mox.spikes.domain.events.TireSizeChanged;
@@ -16,7 +15,13 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.easymock.EasyMock.*;
+import static com.google.inject.Guice.createInjector;
+import static org.easymock.EasyMock.anyObject;
+import static org.easymock.EasyMock.createStrictMock;
+import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.reset;
+import static org.easymock.EasyMock.verify;
 import static org.testng.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 
@@ -41,11 +46,9 @@ public class CustomisationServiceTestCase {
         this.carRepository = createStrictMock(Repository.class);
         this.tireSizeChangedDomainEventHandler = createStrictMock(DomainEventSubscriber.class);
 
-        final Injector injector = Guice.createInjector(new ServicesModule(),
-                                                       new InMemoryEventStoreModule(),
-                                                       new TestServicesDependenciesModule(
-                                                               this.tireSizeChangedDomainEventHandler,
-                                                               this.carRepository));
+        final Injector injector = createInjector(new ServicesModule(),
+                new InMemoryEventStoreModule(), new TestServicesDependenciesModule(
+                        this.tireSizeChangedDomainEventHandler, this.carRepository));
 
         this.customisationService = injector.getInstance(CustomisationService.class);
         assertNotNull(this.customisationService);

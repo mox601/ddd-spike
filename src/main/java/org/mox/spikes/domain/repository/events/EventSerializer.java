@@ -28,17 +28,13 @@ public class EventSerializer extends BaseJsonSerializer {
 
     public String serialize(final DomainEvent aDomainEvent) throws JsonProcessingException {
 
-        final String s = this.getMapper().writeValueAsString(aDomainEvent);
-
-        return s;
+        return this.getMapper().writeValueAsString(aDomainEvent);
     }
 
     public <T extends DomainEvent> T deserialize(final String aSerialization,
                                                  final Class<T> aType) throws IOException {
 
-        T domainEvent = this.getMapper().readValue(aSerialization, aType);
-
-        return domainEvent;
+        return this.getMapper().readValue(aSerialization, aType);
     }
 
 }

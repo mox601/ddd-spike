@@ -22,13 +22,16 @@ public class ServicesModule extends AbstractModule {
         //services
         bind(CustomisationService.class);
 
+        //
+        bind(DomainEventHandler.class);
+
         //domain event publishing dependencies
         final DomainEventPublisherResetter domainEventPublisherResetter =
                 //TODO check if getProvider helps
                 new DomainEventPublisherResetter();
         requestInjection(domainEventPublisherResetter);
 
-        //bind as an aspect
+        //bind as an aspect around every method call of CustomisationService instances
         bindInterceptor(
                 subclassesOf(CustomisationService.class),
                 any(),
@@ -45,6 +48,8 @@ public class ServicesModule extends AbstractModule {
      * see also
      * <p/>
      * http://code.google.com/p/google-guice/wiki/AOP
+     * used to register a domaineventhandler (that persists events)
+     * before every service method gets called
      */
 
     private static class DomainEventPublisherResetter implements MethodInterceptor {
