@@ -43,13 +43,13 @@ public class Thermometer extends EventSourcedAggregate {
 
     public void when(final ThermometerCreated thermometerCreated) {
 
+        this.setId(thermometerCreated.getId());
         this.setTemperature(thermometerCreated.getTemperature());
     }
 
     public void when(final TemperatureIncreased temperatureIncreased) {
 
         //change internal state
-        this.setId(temperatureIncreased.getId());
         this.setTemperature(temperatureIncreased.getValue());
         LOGGER.info("something happened: " + temperatureIncreased.toString());
     }

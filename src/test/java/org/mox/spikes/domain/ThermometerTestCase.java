@@ -45,6 +45,7 @@ public class ThermometerTestCase {
         final Thermometer someEventSourcedInstance =
                 new Thermometer("id", initialTemperature);
         assertEquals(someEventSourcedInstance.getTemperature(), initialTemperature);
+        assertEquals(someEventSourcedInstance.getId(), "id");
 
     }
 }

@@ -1,6 +1,7 @@
 package org.mox.spikes.domain;
 
 import org.mox.spikes.domain.apis.DomainEvent;
+import org.mox.spikes.domain.infrastructure.DomainEventPublisher;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -138,5 +139,16 @@ public abstract class EventSourcedAggregate {
 
     }
 
+    //took it from Aggregate
+    public void publishChanges() {
+
+        final DomainEventPublisher publisher = DomainEventPublisher.getInstance();
+        //publish and clear
+        for (final DomainEvent event : getMutatingEvents()) {
+            publisher.publish(event);
+        }
+
+        getMutatingEvents().clear();
+    }
 
 }
