@@ -19,9 +19,7 @@ public class TireSizeChanged implements DomainEvent {
 
     private TireSizeChanged() {
         //jackson needs this
-        this.eventVersion = -1;
-        this.occurredOn = new DateTime(0);
-        this.plateId = new PlateId("-1");
+        this(new PlateId("-1"), 0, new DateTime(0));
     }
 
     public TireSizeChanged(PlateId plateId, int size, DateTime happenedAt) {

@@ -7,7 +7,14 @@ import org.mox.spikes.domain.apis.ValueObject;
  */
 public class CarId implements ValueObject<CarId> {
 
+    public static final CarId NULL = new CarId();
+
     private String id;
+
+    private CarId() {
+
+        this("");
+    }
 
     public CarId(String id) {
 

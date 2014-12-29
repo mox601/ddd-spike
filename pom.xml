@@ -162,6 +162,12 @@
             <artifactId>easymock</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.higherfrequencytrading</groupId>
+            <artifactId>chronicle</artifactId>
+            <version>1.9.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

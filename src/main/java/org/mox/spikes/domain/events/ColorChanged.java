@@ -18,7 +18,7 @@ public class ColorChanged implements DomainEvent {
     private DateTime occurredOn;
 
     private ColorChanged() {
-
+        this(CarId.NULL, "", new DateTime(0L));
     }
 
     public ColorChanged(CarId carId, String color, DateTime occurredOn) {

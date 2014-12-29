@@ -19,7 +19,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class InMemoryEventStoreTestCase {
 
-    private InMemoryEventStore inMemoryEventStore;
+    private EventStore inMemoryEventStore;
 
     @BeforeClass
     public void setUp() throws Exception {
